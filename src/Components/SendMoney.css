@@ -1,0 +1,58 @@
+.sendmoney-container {
+  padding: 80px 150px;
+  color: #ffffff;
+  background-color: #111827;
+  min-height: 60vh;
+}
+
+.sendmoney-container h2 {
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.sendmoney-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: #1f2937;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* MUI Select/Inputs */
+.sendmoney-form .MuiInputBase-root {
+  background-color: #2e3b55;
+  color: #ffffff;
+}
+
+.sendmoney-form .MuiInputLabel-root {
+  color: #cfcfcf;
+}
+
+.sendmoney-form .MuiOutlinedInput-notchedOutline {
+  border-color: #4b5563;
+}
+
+.sendmoney-form .MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #4c4de6;
+}
+
+.sendmoney-form .MuiInputLabel-root.Mui-focused {
+  color: #4c4de6;
+}
+
+.sendmoney-form button {
+  margin-top: 15px;
+  align-self: flex-start;
+  background-color: #10b981;
+  color: black;
+  font-weight: bold;
+  align-self: center;
+}
+
+.sendmoney-form button:hover {
+  background-color: #16a34a;
+  color: #ffffff;
+}

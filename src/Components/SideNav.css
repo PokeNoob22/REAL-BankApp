@@ -1,0 +1,73 @@
+*, html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 15px;
+    font-family: 'Inter';
+
+}
+
+.sidenav {
+  width: 250px;
+  height: 100vh;
+  /* background-color: #1a2233; */
+  background-color: black;
+  color: #e0ffff;
+  user-select: none;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-radius: 5px;
+  }
+
+.logo {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+
+  }
+  
+#container {
+  margin-top: 35px;
+}
+
+.sidenav ul {
+  list-style-type: none;
+  user-select: none;
+  
+}
+  
+.sidenav ul li a,
+.sidenav ul li .active {
+
+  display: block;
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  padding: 10px 20px;
+  margin-left: 20px;
+  transition: background-color 0.3s, color 0.2s;
+  width: 100%;
+  border-color: #000 2px;
+}
+
+.sidenav ul li a:hover {
+  color: #6366f1; 
+  border-radius: 5px;  
+  border-color: #e0ffff 2px;
+}
+
+.sidenav ul li a.active {
+  background-color: #6366f1; 
+  font-weight: bold; 
+}
+
+@media (max-width: 768px) {
+    .sidenav {
+        width: 100%;
+        height: auto;
+    }
+    .sidenav ul li {
+        margin-left: 20px;
+    }
+}

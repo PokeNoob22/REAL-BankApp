@@ -1,0 +1,56 @@
+.create-user-container {
+  padding: 30px;
+  color: #ffffff;
+  background-color: #111827;
+  min-height: 60vh;
+}
+
+.create-user-container h2 {
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.create-user-form {
+  display: flex;
+  flex-direction: column;
+  background-color: #1f2937;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* MUI Dark input styles */
+.create-user-form .MuiInputBase-root {
+  background-color: #2e3b55;
+  color: #ffffff;
+}
+
+.create-user-form .MuiInputLabel-root {
+  color: #cfcfcf;
+}
+
+.create-user-form .MuiOutlinedInput-notchedOutline {
+  border-color: #4b5563;
+}
+
+.create-user-form .MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #4c4de6;
+}
+
+.create-user-form .MuiInputLabel-root.Mui-focused {
+  color: #4c4de6;
+}
+
+.create-user-form button {
+  margin-top: 15px;
+  align-self: center;
+  background-color: #22c55e;
+  color: black;
+  font-weight: bold;
+}
+
+.create-user-form button:hover {
+  background-color: #16a34a;
+  color: #ffffff;
+}
