@@ -23,7 +23,7 @@ const Customers = ({ customers }) => {
                 <td>{customer.firstName}</td>
                 <td>{customer.lastName}</td>
                 <td>{customer.email}</td>
-                <td>${customer.balance.toFixed(2)}</td>
+                <td>₱{customer.balance.toFixed(2)}</td>
               </tr>
             ))}
           </tbody>

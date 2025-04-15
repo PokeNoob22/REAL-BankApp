@@ -27,30 +27,32 @@ const BudgetTab = ({ customers, setCustomers }) => {
     const price = parseFloat(itemPrice);
     if (isNaN(price) || price < 0) return;
 
-    const updatedItems = [...(customerItems[selectedCustomer.id] || []), { name: itemName, price }];
+    const updatedItems = [
+      ...(customerItems[selectedCustomer.id] || []),
+      { name: itemName, price, bought: false }
+    ];
     setCustomerItems(prev => ({ ...prev, [selectedCustomer.id]: updatedItems }));
     setItemName('');
     setItemPrice('');
-
-    const updatedCustomers = customers.map(customer => {
-      if (customer.id === selectedCustomer.id) {
-        return { ...customer, balance: customer.balance - price };
-      }
-      return customer;
-    });
-    setCustomers(updatedCustomers);
-    setSelectedCustomer(updatedCustomers.find(c => c.id === selectedCustomer.id));
   };
 
   const handleDeleteItem = (index) => {
     const items = customerItems[selectedCustomer.id] || [];
-    const removedItem = items[index];
     const updatedItems = items.filter((_, i) => i !== index);
+    setCustomerItems(prev => ({ ...prev, [selectedCustomer.id]: updatedItems }));
+  };
+
+  const handleToggleBought = (index) => {
+    const items = customerItems[selectedCustomer.id] || [];
+    const item = items[index];
+    const updatedItem = { ...item, bought: !item.bought };
+    const updatedItems = items.map((i, idx) => idx === index ? updatedItem : i);
     setCustomerItems(prev => ({ ...prev, [selectedCustomer.id]: updatedItems }));
 
     const updatedCustomers = customers.map(customer => {
       if (customer.id === selectedCustomer.id) {
-        return { ...customer, balance: customer.balance + removedItem.price };
+        const balanceChange = updatedItem.bought ? -updatedItem.price : updatedItem.price;
+        return { ...customer, balance: customer.balance + balanceChange };
       }
       return customer;
     });
@@ -74,7 +76,9 @@ const BudgetTab = ({ customers, setCustomers }) => {
 
       {selectedCustomer && (
         <div className="budget-panel">
-          <p>Balance: ${selectedCustomer.balance.toFixed(2)}</p>
+          <p style={{ color: selectedCustomer.balance < 0 ? 'red' : 'white' }}>
+            Balance: ${selectedCustomer.balance.toFixed(2)}
+          </p>
           <div className="item-form">
             <input
               type="text"
@@ -93,9 +97,14 @@ const BudgetTab = ({ customers, setCustomers }) => {
 
           <ul className="item-list">
             {items.map((item, index) => (
-              <li key={index}>
-                {item.name} - ${item.price.toFixed(2)}
-                <button onClick={() => handleDeleteItem(index)}>Delete</button>
+              <li key={index} style={{ textDecoration: item.bought ? 'line-through' : 'none' }}>
+                <span>{item.name} - ${item.price.toFixed(2)}</span>
+                <div>
+                  <button onClick={() => handleToggleBought(index)}>
+                    {item.bought ? 'Refund' : 'Bought'}
+                  </button>
+                  <button onClick={() => handleDeleteItem(index)}>Delete</button>
+                </div>
               </li>
             ))}
           </ul>
